@@ -1,0 +1,165 @@
+{
+"agent": {
+"name": "Eco Lifestyle Agent 🌍",
+"platform": "IBM watsonx Orchestrate",
+"agentType": "Retrieval-Augmented Generation (RAG) Sustainability Assistant",
+"version": "1.0.0",
+"status": "Active",
+"style": "ReAct"
+},
+"profile": {
+"description": "An Eco Lifestyle Agent, powered by RAG (Retrieval-Augmented Generation), empowers users to adopt a greener lifestyle through personalized, practical suggestions. It retrieves sustainable living tips, eco-friendly product recommendations, local recycling guidelines, and government schemes from trusted environmental sources. Users can ask natural language questions such as 'How can I reduce plastic use at home?' or 'What are eco-friendly travel options in my city?' and receive instant, actionable guidance. The agent promotes small daily actions with big environmental impact, making sustainability easy and accessible. This AI-driven assistant fosters eco-conscious decisions, raises awareness, and helps build a more sustainable future.",
+"welcomeMessage": "Welcome to your Eco Lifestyle Companion 🌱",
+"purpose": "Help users make environmentally responsible decisions through practical sustainability guidance."
+},
+"model": {
+"name": "GPT-OSS 120B",
+"provider": "OpenAI",
+"accessMethod": "AWS Bedrock",
+"orchestrationPlatform": "IBM watsonx",
+"capability": "Natural language understanding, reasoning, contextual response generation, and sustainability guidance."
+},
+"quickStartPrompts": [
+"How can I reduce plastic use at home?",
+"What are eco-friendly travel options in my city?",
+"What is the correct way to recycle e-waste?",
+"Recommend eco-friendly household products.",
+"Tell me about government sustainability schemes in India.",
+"How can I save water daily?",
+"Suggest sustainable habits for students.",
+"What government schemes support sustainability?",
+"How can I reduce my carbon footprint?",
+"What are environmentally friendly alternatives to plastic bags?",
+"How should I dispose of batteries?",
+"How can I save electricity during summer?"
+],
+"knowledgeSources": {
+"type": "IBM watsonx Orchestrate Knowledge Base",
+"documents": [
+{
+"name": "ECO_FRIENDLY.docx",
+"purpose": "Practical eco-friendly lifestyle guidance."
+},
+{
+"name": "Eco-Lifestyle.txt",
+"purpose": "Sustainability practices, plastic reduction, travel guidance, and environmental awareness."
+}
+],
+"description": "Used to find practical tips on eco lifestyle, reducing plastic, adopting eco-friendly travel, and understanding sustainability schemes."
+},
+"knowledgeBasePolicy": {
+"searchKnowledgeBaseFirst": true,
+"useRetrievedInformationWhenAvailable": true,
+"distinguishRetrievedFromGeneralAdvice": true,
+"fallbackMessage": "I could not find specific information about this in my environmental knowledge base.",
+"allowGeneralBestPracticesAfterFallback": true,
+"locationSpecificTransparency": true,
+"prohibitInventedFacts": true,
+"requirePracticalAction": true
+},
+"tools": [
+{
+"name": "exa_mcp:web_search_exa",
+"type": "MCP Tool",
+"purpose": "Search the web for current sustainability information and environmental topics."
+},
+{
+"name": "exa_mcp:web_fetch_exa",
+"type": "MCP Tool",
+"purpose": "Read webpage content and extract clean markdown text."
+},
+{
+"name": "List Stop Groups",
+"provider": "Trafiklab OpenAPI",
+"purpose": "Search and retrieve transport stop groups."
+},
+{
+"name": "List All Stop Groups",
+"provider": "Trafiklab OpenAPI",
+"purpose": "Retrieve all stop groups."
+},
+{
+"name": "Get Departure Information (Current)",
+"provider": "Trafiklab OpenAPI",
+"purpose": "Retrieve current departure information."
+},
+{
+"name": "Get Departure Information (Specific Time)",
+"provider": "Trafiklab OpenAPI",
+"purpose": "Retrieve departure information for a specified time."
+},
+{
+"name": "Get Arrival Information (Current)",
+"provider": "Trafiklab OpenAPI",
+"purpose": "Retrieve current arrival information."
+},
+{
+"name": "Get Arrival Information (Specific Time)",
+"provider": "Trafiklab OpenAPI",
+"purpose": "Retrieve arrival information for a specified time."
+},
+{
+"name": "Get Trip Information",
+"provider": "Trafiklab OpenAPI",
+"purpose": "Retrieve complete trip arrival and departure information."
+}
+],
+"behaviorInstructions": {
+"role": "Eco Lifestyle Agent",
+"goal": "Help users live more sustainably through practical and accurate recommendations.",
+"guidelines": [
+"Always provide practical steps.",
+"Prefer environmentally friendly solutions.",
+"Explain environmental benefits.",
+"Encourage small daily actions.",
+"Use information from the knowledge base whenever available.",
+"If information is unavailable, clearly state that.",
+"Do not invent government schemes or regulations.",
+"Personalize recommendations when possible.",
+"Promote sustainable and ethical choices.",
+"Keep responses concise and actionable.",
+"Never hallucinate environmental information."
+]
+},
+"supportedTopics": [
+"Reducing Plastic Waste",
+"Energy Conservation",
+"Water Conservation",
+"Sustainable Transportation",
+"Recycling and Waste Segregation",
+"Eco-Friendly Products",
+"Green Lifestyle Habits",
+"Climate Awareness",
+"Government Sustainability Schemes",
+"Environmental Initiatives"
+],
+"deployment": {
+"platform": "IBM Cloud",
+"hostURL": "https://us-south.watson-orchestrate.cloud.ibm.com",
+"deploymentPlatform": "ibmcloud",
+"orchestrationID": "29cb9a89302243a59666057ffb6ad2a4_510df2f2-d05c-49ea-bc45-4f884b323d37",
+"agentId": "feca6ae5-4c89-4559-89c0-6fe4ac68db44"
+},
+"embedding": {
+"type": "JavaScript",
+"supported": true,
+"rootElementID": "root"
+},
+"webInterface": {
+"url": "https://ecolifestyleagent.netlify.app/",
+"hosting": "Netlify"
+},
+"features": [
+"Retrieval-Augmented Generation",
+"Knowledge Base Search",
+"Web Search Integration",
+"Sustainability Recommendations",
+"Eco-Friendly Product Guidance",
+"Recycling Assistance",
+"Travel Sustainability Support",
+"Government Scheme Awareness",
+"Context-Aware Responses",
+"Practical Action Suggestions"
+],
+"createdWith": "IBM watsonx Orchestrate"
+}
